@@ -6,9 +6,7 @@ class TennisGameImpl implements TennisGame {
     
   }
 
-  getScore(): string {
-    var pointsA = 3; // Just for tests
-    var pointsB = 5; // Just for tests
+  getScore(pointsA: number, pointsB: number): string {    
     var score = "";
 
     if(pointsA == pointsB && pointsA < 3) {
@@ -42,8 +40,8 @@ class TennisGameImpl implements TennisGame {
 
   getHigherPlayer(pointsA: number, pointsB: number) : string {
     if(pointsA > pointsB)
-      return " A";
+      return "A";
     else
-      return " B";
+      return "B";
   }
 }
