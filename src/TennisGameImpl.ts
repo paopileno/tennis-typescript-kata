@@ -7,17 +7,17 @@ class TennisGameImpl implements TennisGame {
   }
 
   getScore(): string {
-    var pointsA = 3;
-    var pointsB = 5;
+    var pointsA = 3; // Just for tests
+    var pointsB = 5; // Just for tests
     var score = "";
 
     if(pointsA == pointsB && pointsA < 3) {
       score += this.getScoreByPoints(pointsA) + "-all";
     } else if(pointsA == pointsB && pointsA >= 3) {
       score = "douce";
-    } else if(pointsA > 3 && pointsB > 3 && Math.abs(pointsA - pointsB) == 1) {
+    } else if(pointsA >= 3 && pointsB >= 3 && Math.abs(pointsA - pointsB) == 1) {
       score = "Advantage " + this.getHigherPlayer(pointsA, pointsB);
-    } else if(pointsA >= 4 || pointsB >= 4 && Math.abs(pointsA - pointsB) > 2) {
+    } else if((pointsA >= 4 || pointsB >= 4) && Math.abs(pointsA - pointsB) >= 2) {
       score = "Game " + this.getHigherPlayer(pointsA, pointsB);      
     } else {
       score = this.getScoreByPoints(pointsA) + "-" + this.getScoreByPoints(pointsB);
