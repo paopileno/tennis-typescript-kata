@@ -1,24 +1,35 @@
 /// <reference path="../references.ts" />
 
-class TennisGameImpl implements TennisGame {
+class TennisGameImpl implements TennisGame {  
 
-  wonPoint(player: Player) {
-    
+  pointsA : number;
+  pointsB : number;
+
+  constructor() {
+    this.pointsA = 0;
+    this.pointsB = 0;
   }
 
-  getScore(pointsA: number, pointsB: number): string {    
-    var score = "";
+  wonPoint(player: Player) {
+   if(player == Player.A) {
+    this.pointsA++;
+   } else if(player == Player.B) {
+    this.pointsB++;
+   }    
+  }
 
-    if(pointsA == pointsB && pointsA < 3) {
-      score += this.getScoreByPoints(pointsA) + "-all";
-    } else if(pointsA == pointsB && pointsA >= 3) {
+  getScore(): string {    
+    var score = "";
+    if(this.pointsA == this.pointsB && this.pointsA < 3) {
+      score += this.getScoreByPoints(this.pointsA) + "-all";
+    } else if(this.pointsA == this.pointsB && this.pointsA >= 3) {
       score = "douce";
-    } else if(pointsA >= 3 && pointsB >= 3 && Math.abs(pointsA - pointsB) == 1) {
-      score = "Advantage " + this.getHigherPlayer(pointsA, pointsB);
-    } else if((pointsA >= 4 || pointsB >= 4) && Math.abs(pointsA - pointsB) >= 2) {
-      score = "Game " + this.getHigherPlayer(pointsA, pointsB);      
+    } else if(this.pointsA >= 3 && this.pointsB >= 3 && Math.abs(this.pointsA - this.pointsB) == 1) {
+      score = "Advantage " + this.getHigherPlayer(this.pointsA, this.pointsB);
+    } else if((this.pointsA >= 4 || this.pointsB >= 4) && Math.abs(this.pointsA - this.pointsB) >= 2) {
+      score = "Game " + this.getHigherPlayer(this.pointsA, this.pointsB);      
     } else {
-      score = this.getScoreByPoints(pointsA) + "-" + this.getScoreByPoints(pointsB);
+      score = this.getScoreByPoints(this.pointsA) + "-" + this.getScoreByPoints(this.pointsB);
     }
 
     return score;

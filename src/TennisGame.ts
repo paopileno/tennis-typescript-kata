@@ -12,7 +12,7 @@ interface TennisGame {
    * Example: Returns "15-love" if player A has won one point and 
    * player B hos not yet won a point .
    */
-  getScore(pointsA: number, pointsB: number): string;
+  getScore(): string;
 }
 
 
